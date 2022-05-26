@@ -64,12 +64,12 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       },
       rollupOptions: {
         output: {
-          manualChunks: configManualChunk,
+          // manualChunks: configManualChunk
         },
       },
       // Turning off brotliSize display can slightly reduce packaging time
       brotliSize: false,
-      chunkSizeWarningLimit: 2000,
+      chunkSizeWarningLimit: 2000
     }
   }
 })

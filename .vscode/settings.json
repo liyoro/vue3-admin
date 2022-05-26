@@ -1,8 +1,20 @@
 {
-    // //开启 eslint 支持
-    // "prettier.eslintIntegration": true,
-    // //使用单引号
-    // "prettier.singleQuote": true,
-    // //结尾不加分号
-    "prettier.semi": false
+  // //开启 eslint 支持
+  // "prettier.eslintIntegration": true,
+  // //使用单引号
+  // "prettier.singleQuote": true,
+  // //结尾不加分号
+  "prettier.semi": false,
+  // stylelint 需要检查的文件
+  // "stylelint.validate": ["css", "less", "postcss", "scss", "vue", "sass"],
+  "cSpell.userWords": [
+    "overtext",
+    "searchcols",
+    "vite",
+    "pinia",
+    "vitejs"
+  ],
+  "[vue]": {
+    "editor.defaultFormatter": "Vue.volar"
+  }
 }

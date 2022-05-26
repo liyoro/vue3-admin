@@ -48,3 +48,22 @@ pnpm add pinia pinia-plugin-persist -D
 
 
 
+## 错误
+
+```
+The 1 extension(s) below, in workspace recommendations have issues: johnsoncodehk.volar (not found in marketplace)
+```
+
+解：
+
+``` extensions.json
+{
+  "recommendations": ["vue.volar"]
+}
+```
+
+``` settings.json
+"[vue]": {
+    "editor.defaultFormatter": "Vue.volar"
+}
+```
