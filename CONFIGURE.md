@@ -50,6 +50,8 @@ pnpm add pinia pinia-plugin-persist -D
 
 ## 错误
 
+### 1
+
 ```
 The 1 extension(s) below, in workspace recommendations have issues: johnsoncodehk.volar (not found in marketplace)
 ```
@@ -66,4 +68,10 @@ The 1 extension(s) below, in workspace recommendations have issues: johnsoncodeh
 "[vue]": {
     "editor.defaultFormatter": "Vue.volar"
 }
+```
+
+### 2
+
+```
+';' expected.ts(1005)
 ```
