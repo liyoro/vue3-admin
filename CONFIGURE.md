@@ -1,5 +1,11 @@
 构建过程参考 [Vite官方文档](https://cn.vitejs.dev/)
 
+* [@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue)
+* [@vitejs/plugin-vue-jsx](https://github.com/vitejs/vite/tree/main/packages/plugin-vue-jsx)
+
+
+使用`VSCode`开发
+
 ## 初始化项目
 
 [pnpm](https://www.pnpm.cn/)
@@ -30,6 +36,121 @@ pnpm create vite
 
 ```
 pnpm add @types/node -D
+```
+
+## 代码格式化需要Vscode插件配合
+
+`Prettier`、`ESLint`、`TSLint`
+
+## eslint
+
+[eslint-define-config](https://www.npmjs.com/package/eslint-define-config)
+
+```
+pnpm add eslint eslint-define-config -D
+```
+
+### 初始化`eslint`
+
+```
+npx eslint --init
+```
+
+- How would you like to use ESLint? --- To check syntax and find problems
+- What type of modules does your project use? --- JavaScript modules (import/export)
+- Which framework does your project use? --- Vue.js
+- Does your project use TypeScript? --- YES
+- Where does your code run? --- Browser、Node
+- What format do you want your config file to be in? --- JavaScript
+- Would you like to install them now with npm? --- No
+
+选 No，用 pnpm 安装
+
+```
+pnpm add eslint-plugin-vue@latest @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest -D
+```
+
+最终会生成`.eslintrc.js`文件，`eslint`在这个文件配置
+
+### 默认 eslint 不会解析 vue 文件，需要一个额外的解析器来解析
+
+在`.eslintrc.js`文件添加
+
+```
+"parser":"vue-eslint-parser"
+```
+
+### eslint 检查命令
+
+```
+"lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix"
+```
+
+## prettier
+
+```
+pnpm add prettier -D
+```
+
+[官方文档](https://prettier.io/docs/en/options.html)
+
+在`.eslintrc.js`文件添加
+
+```
+extends: [
+  'prettier',
+  'plugin:prettier/recommended'
+]
+```
+
+`prettier`的配置在 `prettier.config.js`文件
+
+### prettier 检查命令
+
+```
+"format": "prettier --write \"./**/*.{vue,ts,tsx,js,jsx,css,less,scss,json,md}\""
+```
+
+## prettier、eslint冲突
+
+```
+pnpm add eslint-config-prettier eslint-plugin-prettier -D
+```
+
+## 依赖按需自动导入
+
+[unplugin-auto-import](https://github.com/antfu/unplugin-auto-import)
+
+```
+pnpm add unplugin-auto-import -D
+```
+
+`vite.config.ts`配置
+
+```
+plugins: [
+  AutoImport({
+    imports: ['vue', 'vue-router'],
+    dts: 'src/auto-imports.d.ts'
+  })
+]
+```
+
+
+
+## 按需导入组件库样式
+
+[vite-plugin-style-import](https://github.com/vbenjs/vite-plugin-style-import)
+
+```
+pnpm add vite-plugin-style-import -D
+```
+
+
+## sass
+
+```
+pnpm add sass autoprefixer postcss -D
 ```
 
 ### vue-router

@@ -2,7 +2,6 @@
 
 pnpm + Vite + Vue3 + Typescript + Pinia + Element-Plus +
 
-
 ## 运行
 
 启动开发服务器
@@ -33,11 +32,17 @@ vue3-admin
 	└─ main.ts             	# 入口文件
 ├─ .env.development			# 开发环境配置
 ├─ .env.production			# 生产环境配置
+├─ .eslintignore			# 忽略 Eslint 校验
+├─ .eslintrc.js           	# Eslint 校验配置
+├─ .gitignore             	# git 提交忽略
 ├─ .npmrc					# npm运行时配置文件
+├─ .prettierignore        	# 忽略 prettier 格式化
 ├─ index.html				# 入口 html
 ├─ LICENSE					# 开源协议
 ├─ package.json				# 包管理
 ├─ pnpm-lock.yaml			# pnpm包版本锁
+├─ postcss.config.js      	# postcss 配置
+├─ prettier.config.js		# prettier 配置
 ├─ README.md				# 项目介绍文档
 ├─ CONFIGURE.md				# 项目配置介绍文档
 ├─ tsconfig.json			# typescript 全局配置
@@ -48,17 +53,9 @@ vue3-admin
 │  ├─ config              		# 全局配置项
 │  ├─ directives          	# 全局指令文件
 │  ├─ enums               # 项目枚举
-│  ├─ hooks               	# 常用 Hooks 
-│  ├─ store               	# pinia store 
+│  ├─ hooks               	# 常用 Hooks
+│  ├─ store               	# pinia store
 ├─ .editorconfig          	# 编辑器配置（格式化）
-├─ .env.test              # 测试环境配置
-├─ .eslintignore          # 忽略 Eslint 校验
-├─ .eslintrc.js           # Eslint 校验配置
-├─ .gitignore             # git 提交忽略
-├─ .prettierignore        # 忽略 prettier 格式化
-├─ .prettierrc.js         # prettier 配置
-├─ postcss.config.js      # postcss 配置
+
 
 ```
-
-

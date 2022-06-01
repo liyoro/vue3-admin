@@ -8,16 +8,16 @@
 // }
 
 interface ImportMetaEnv {
-  readonly ENV: string,
-  readonly VITE_PORT: number,
-  readonly VITE_API_BASE_URL: string,
-  readonly VITE_API_SERVER_URL: string,
-  readonly VITE_MOCK_API_BASE_URL: string,
-  readonly VITE_MOCK_API_SERVER_URL: string,
-	readonly VITE_BUILD_COMPRESS: boolean,
+	readonly ENV: string
+	readonly VITE_PORT: number
+	readonly VITE_API_BASE_URL: string
+	readonly VITE_API_SERVER_URL: string
+	readonly VITE_MOCK_API_BASE_URL: string
+	readonly VITE_MOCK_API_SERVER_URL: string
+	readonly VITE_BUILD_COMPRESS: boolean
 	readonly VITE_DROP_CONSOLE: boolean
 }
 
 interface ImportMeta {
-  readonly env: ImportMetaEnv
+	readonly env: ImportMetaEnv
 }
