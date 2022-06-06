@@ -3,6 +3,8 @@ import { loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 // https://vitejs.dev/config/
 export default ({ command, mode }: ConfigEnv): UserConfig => {
@@ -34,8 +36,8 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
 		css: {
 			preprocessorOptions: {
 				scss: {
-					// additionalData: `@use "@/styles/variables.scss" as *;`
-					additionalData: `@import "@/styles/variables.scss";`
+					additionalData: `@use "@/styles/variables.scss" as *;`
+					// additionalData: `@import "@/styles/variables.scss";`
 				}
 			}
 		},
@@ -48,17 +50,17 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
 			cors: false, // 类型： boolean | CorsOptions 为开发服务器配置 CORS。默认启用并允许任何源
 			host: '0.0.0.0', // IP配置，支持从IP启动
 			proxy: {
-				"/api": {
-					target: "",
+				'/api': {
+					target: '',
 					changeOrigin: true,
-					rewrite: path => path.replace(/^\/api/, "")
+					rewrite: (path) => path.replace(/^\/api/, '')
 				}
 			}
 		},
 		// build
 		build: {
 			target: 'es2015',
-			minify: "terser",
+			minify: 'terser',
 			terserOptions: {
 				compress: {
 					keep_infinity: true,
@@ -77,17 +79,43 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
 		},
 		// plugins
 		plugins: [
-      vue(),
-      vueJsx(),
+			vue(),
+			vueJsx(),
 			AutoImport({
-				// include: [
-				//   /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
-				//   /\.vue$/,
-				//   /\.vue\?vue/, // .vue
-				//   /\.md$/, // .md
-				// ],
 				imports: ['vue', 'vue-router'],
-				dts: 'src/auto-imports.d.ts'
+				dts: 'src/auto-imports.d.ts',
+				resolvers: [ElementPlusResolver()]
+			}),
+			Components({
+				// relative paths to the directory to search for components.
+				dirs: ['src/components'],
+			
+				// valid file extensions for components.
+				extensions: ['vue'],
+				// search for subdirectories
+				deep: true,
+				// resolvers for custom components
+				resolvers: [ElementPlusResolver({ importStyle: 'sass' })],
+				// generate `components.d.ts` global declarations,
+				// also accepts a path for custom filename
+				// dts: false,
+				dts: 'src/components.d.ts',
+
+				// Allow subdirectories as namespace prefix for components.
+				directoryAsNamespace: false,
+				// Subdirectory paths for ignoring namespace prefixes
+				// works when `directoryAsNamespace: true`
+				globalNamespaces: [],
+			
+				// auto import for directives
+				// default: `true` for Vue 3, `false` for Vue 2
+				// Babel is needed to do the transformation for Vue 2, it's disabled by default for performance concerns.
+				// To install Babel, run: `npm install -D @babel/parser @babel/traverse`
+				directives: true,
+			
+				// filters for transforming targets
+				include: [/\.vue$/, /\.vue\?vue/],
+				exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /[\\/]\.nuxt[\\/]/]
 			})
 		]
 	}

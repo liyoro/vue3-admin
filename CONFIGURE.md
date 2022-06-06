@@ -38,11 +38,11 @@ pnpm create vite
 pnpm add @types/node -D
 ```
 
-## 代码格式化需要Vscode插件配合
+### 代码格式化需要Vscode插件配合
 
 `Prettier`、`ESLint`、`TSLint`
 
-## eslint
+### eslint
 
 [eslint-define-config](https://www.npmjs.com/package/eslint-define-config)
 
@@ -50,7 +50,7 @@ pnpm add @types/node -D
 pnpm add eslint eslint-define-config -D
 ```
 
-### 初始化`eslint`
+#### 初始化`eslint`
 
 ```
 npx eslint --init
@@ -72,7 +72,7 @@ pnpm add eslint-plugin-vue@latest @typescript-eslint/eslint-plugin@latest @types
 
 最终会生成`.eslintrc.js`文件，`eslint`在这个文件配置
 
-### 默认 eslint 不会解析 vue 文件，需要一个额外的解析器来解析
+#### 默认 eslint 不会解析 vue 文件，需要一个额外的解析器来解析
 
 在`.eslintrc.js`文件添加
 
@@ -80,13 +80,13 @@ pnpm add eslint-plugin-vue@latest @typescript-eslint/eslint-plugin@latest @types
 "parser":"vue-eslint-parser"
 ```
 
-### eslint 检查命令
+#### eslint 检查命令
 
 ```
 "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix"
 ```
 
-## prettier
+### prettier
 
 ```
 pnpm add prettier -D
@@ -105,19 +105,19 @@ extends: [
 
 `prettier`的配置在 `prettier.config.js`文件
 
-### prettier 检查命令
+#### prettier 检查命令
 
 ```
 "format": "prettier --write \"./**/*.{vue,ts,tsx,js,jsx,css,less,scss,json,md}\""
 ```
 
-## prettier、eslint冲突
+### prettier、eslint冲突
 
 ```
 pnpm add eslint-config-prettier eslint-plugin-prettier -D
 ```
 
-## 依赖按需自动导入
+### 依赖按需自动导入
 
 [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import)
 
@@ -137,8 +137,7 @@ plugins: [
 ```
 
 
-
-## 按需导入组件库样式
+### 按需导入组件库样式
 
 [vite-plugin-style-import](https://github.com/vbenjs/vite-plugin-style-import)
 
@@ -147,7 +146,7 @@ pnpm add vite-plugin-style-import -D
 ```
 
 
-## sass
+### sass
 
 ```
 pnpm add sass autoprefixer postcss -D
@@ -157,6 +156,36 @@ pnpm add sass autoprefixer postcss -D
 
 ```
 pnpm add vue-router
+```
+
+### element-plus
+
+[element-plus](https://element-plus.org/zh-CN/#/zh-CN)
+
+```
+pnpm install element-plus -D
+```
+
+按需导入
+
+```
+pnpm add unplugin-vue-components -D
+```
+
+配置参考 [按需导入](https://element-plus.org/zh-CN/guide/quickstart.html#%E6%8C%89%E9%9C%80%E5%AF%BC%E5%85%A5)
+
+*注意*
+
+`vite.config.ts`配置文件里面，全局css文件需要改成如下，不然会报错
+
+```
+css: {
+  preprocessorOptions: {
+    scss: {
+      additionalData: `@use "@/styles/variables.scss" as *;`
+    }
+  }
+}
 ```
 
 ### Pinia
@@ -194,5 +223,5 @@ The 1 extension(s) below, in workspace recommendations have issues: johnsoncodeh
 ### 2
 
 ```
-';' expected.ts(1005)
+
 ```

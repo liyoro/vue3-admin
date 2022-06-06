@@ -5,7 +5,7 @@ import App from './App.vue'
 import { router } from '@/routers/index'
 
 // CSS common style sheet
-import "@/styles/index.scss"
+import '@/styles/index.scss'
 
 const app = createApp(App)
 
