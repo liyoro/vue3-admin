@@ -9,6 +9,6 @@
 	// "stylelint.validate": ["css", "less", "postcss", "scss", "vue", "sass"],
 	"cSpell.userWords": ["overtext", "searchcols", "vite", "pinia", "vitejs"],
 	"[vue]": {
-		"editor.defaultFormatter": "Vue.volar"
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	}
 }

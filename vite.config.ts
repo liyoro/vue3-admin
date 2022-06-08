@@ -2,15 +2,18 @@ import type { UserConfig, ConfigEnv } from 'vite'
 import { loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import viteCompression from 'vite-plugin-compression'
+import { configManualChunk } from './config/vite/optimizer'
 
 // https://vitejs.dev/config/
 export default ({ command, mode }: ConfigEnv): UserConfig => {
 	const isBuild = command === 'build'
 	const env = loadEnv(mode, process.cwd(), '')
-	console.log(isBuild, env)
+	console.log(isBuild, env.VITE_BUILD_COMPRESS)
 
 	return {
 		// base: import.meta.env.VITE_API_BASE_URL,
@@ -70,7 +73,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
 			},
 			rollupOptions: {
 				output: {
-					// manualChunks: configManualChunk
+					manualChunks: configManualChunk
 				}
 			},
 			// Turning off brotliSize display can slightly reduce packaging time
@@ -81,6 +84,8 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
 		plugins: [
 			vue(),
 			vueJsx(),
+			// name 可以写在 script 标签上
+			vueSetupExtend(),
 			AutoImport({
 				imports: ['vue', 'vue-router'],
 				dts: 'src/auto-imports.d.ts',
@@ -89,7 +94,6 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
 			Components({
 				// relative paths to the directory to search for components.
 				dirs: ['src/components'],
-			
 				// valid file extensions for components.
 				extensions: ['vue'],
 				// search for subdirectories
@@ -106,17 +110,24 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
 				// Subdirectory paths for ignoring namespace prefixes
 				// works when `directoryAsNamespace: true`
 				globalNamespaces: [],
-			
 				// auto import for directives
 				// default: `true` for Vue 3, `false` for Vue 2
 				// Babel is needed to do the transformation for Vue 2, it's disabled by default for performance concerns.
 				// To install Babel, run: `npm install -D @babel/parser @babel/traverse`
 				directives: true,
-			
 				// filters for transforming targets
 				include: [/\.vue$/, /\.vue\?vue/],
 				exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /[\\/]\.nuxt[\\/]/]
-			})
+			}),
+			// gzip compress
+			env.VITE_BUILD_COMPRESS &&
+				viteCompression({
+					verbose: true,
+					disable: false,
+					threshold: 10240,
+					algorithm: 'gzip',
+					ext: '.gz'
+				})
 		]
 	}
 }

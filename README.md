@@ -17,19 +17,25 @@ pnpm run dev
 ```
 vue3-admin
 ├─ .vscode					# vscode推荐配置
+├─ config					# 项目配置项
 ├─ public					# 静态资源文件（忽略打包）
 ├─ src
 	├─ api					# API 接口管理
 	├─ assets				# 静态资源文件
 	├─ components			# 全局组件
+	├─ hooks               	# 封装 Hooks
 	├─ layout				# 页面框架布局
 	├─ routers				# 路由管理
+	├─ store				# pinia store
 	├─ styles				# 全局样式
 	├─ utils				# 工具库
 	├─ views				# 页面
-	├─ App.vue             	# 入口页面
+	├─ App.vue             	# 入口页面 
+	├─ auto-imports.d.ts 	# 依赖按需自动导入
+	├─ components.d.ts		# 项目组件自动按需导入
 	├─ env.d.ts				# ts 识别 vue 文件
 	└─ main.ts             	# 入口文件
+├─ .editorconfig			# 编辑器配置（格式化）
 ├─ .env.development			# 开发环境配置
 ├─ .env.production			# 生产环境配置
 ├─ .eslintignore			# 忽略 Eslint 校验
@@ -49,13 +55,6 @@ vue3-admin
 └─ vite.config.ts			# vite 配置
 
 
-
-│  ├─ config              		# 全局配置项
-│  ├─ directives          	# 全局指令文件
-│  ├─ enums               # 项目枚举
-│  ├─ hooks               	# 常用 Hooks
-│  ├─ store               	# pinia store
-├─ .editorconfig          	# 编辑器配置（格式化）
-
+├─ directives          	# 全局指令文件
 
 ```

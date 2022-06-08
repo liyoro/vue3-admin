@@ -137,15 +137,6 @@ plugins: [
 ```
 
 
-### 按需导入组件库样式
-
-[vite-plugin-style-import](https://github.com/vbenjs/vite-plugin-style-import)
-
-```
-pnpm add vite-plugin-style-import -D
-```
-
-
 ### sass
 
 ```
@@ -190,13 +181,44 @@ css: {
 
 ### Pinia
 
+[pinia](https://github.com/vuejs/pinia)
+
 [pinia-plugin-persist](https://seb-l.github.io/pinia-plugin-persist/)
 
 ```
 pnpm add pinia pinia-plugin-persist -D
 ```
 
+### vite-plugin-vue-setup-extend
 
+name 可以写在 script 标签上
+
+[vite-plugin-vue-setup-extend](https://github.com/vbenjs/vite-plugin-vue-setup-extend)
+
+```
+pnpm add vite-plugin-vue-setup-extend -D
+```
+
+### vite-plugin-compression 代码压缩
+
+[vite-plugin-compression](https://github.com/vbenjs/vite-plugin-compression)
+
+```
+pnpm add vite-plugin-compression -D
+```
+
+### Chunk 拆包
+
+```
+// vite.config.ts
+build: {
+  rollupOptions: {
+    output: {
+      manualChunks: configManualChunk
+    }
+  }
+}
+```
 
 ## 错误
 

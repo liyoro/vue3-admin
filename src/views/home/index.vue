@@ -5,9 +5,12 @@
 </template>
 
 <script setup lang="ts">
-const test = ref('hhhh哈哈哈哈')
+	import { useAppStore } from '@/hooks/useApp'
+	const { getCollapsed, setCollapsed } = useAppStore()
+	setCollapsed(false)
+	const test = ref(getCollapsed)
 </script>
 
 <style lang="scss">
-@import './index.scss';
+	@import './index.scss';
 </style>
