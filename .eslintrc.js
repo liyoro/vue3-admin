@@ -24,7 +24,9 @@ module.exports = defineConfig({
 		'prettier',
 		'plugin:prettier/recommended'
 	],
+	// plugins: ['prettier'],
 	rules: {
+		// 'prettier/prettier': 'error',
 		'no-var': 'error', // 要求使用 let 或 const 而不是 var
 		'vue/script-setup-uses-vars': 'error',
 		'@typescript-eslint/ban-ts-ignore': 'off',

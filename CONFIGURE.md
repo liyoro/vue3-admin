@@ -115,7 +115,11 @@ extends: [
 
 ```
 pnpm add eslint-config-prettier eslint-plugin-prettier -D
+
+pnpm add @adamjlev/prettier -D
 ```
+
+
 
 ### 依赖按需自动导入
 
@@ -144,6 +148,8 @@ pnpm add sass autoprefixer postcss -D
 ```
 
 ### vue-router
+
+[vue-router](https://router.vuejs.org/zh/)
 
 ```
 pnpm add vue-router

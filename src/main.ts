@@ -14,4 +14,5 @@ app.use(router)
 // pinia
 setupStore(app)
 
-app.mount('#app')
+// 注意：在服务器端，你需要手动跳转到初始地址。
+router.isReady().then(() => app.mount('#app'))

@@ -5,6 +5,7 @@
 	// "prettier.singleQuote": true,
 	// //结尾不加分号
 	"prettier.semi": false,
+	// "prettier.htmlWhitespaceSensitivity": "ignore",
 	// stylelint 需要检查的文件
 	// "stylelint.validate": ["css", "less", "postcss", "scss", "vue", "sass"],
 	"cSpell.userWords": ["overtext", "searchcols", "vite", "pinia", "vitejs"],

@@ -6,8 +6,7 @@
 
 <script setup lang="ts">
 	import { useAppStore } from '@/hooks/useApp'
-	const { getCollapsed, setCollapsed } = useAppStore()
-	setCollapsed(false)
+	const { getCollapsed } = useAppStore()
 	const test = ref(getCollapsed)
 </script>
 
